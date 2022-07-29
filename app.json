@@ -1,16 +1,29 @@
 {
   "expo": {
-    "name": "alzaim-clinet",
-    "slug": "alzaim-clinet",
+    "name": "الزعيم - العميل",
+    "slug": "alzaimClient",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.jpg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/logo/logoZaim.png",
+          "color": "#ffffff",
+          "sounds": [
+            "./assets/n1.wav",
+            "./assets/n2.wav"
+          ]
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -18,16 +31,27 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alnahr.alzaimClient",
+      "buildNumber": "1.0.1"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/logo/logoZaim.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "useNextNotificationsApi": true,
+      "package": "com.alnahr.alzaimClient",
+      "versionCode": 2
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./app/assets/logo/logoZaim.png"
+    },
+    "notification": {
+      "icon": "./app/assets/logo/logoZaim.png",
+      "color": "#FFFFFF",
+      "iosDisplayInForeground": true,
+      "androidMode": "default"
     }
   }
 }
