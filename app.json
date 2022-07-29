@@ -15,7 +15,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./assets/logo/logoZaim.png",
+          "icon": "./app/assets/logo/NL.png",
           "color": "#ffffff",
           "sounds": [
             "./assets/n1.wav",

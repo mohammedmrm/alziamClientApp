@@ -2,15 +2,15 @@ import Constants from "expo-constants";
 const settings = {
   dev: {
     apiUrl: "http://alzaimexpress.com/client/api",
-    logo: require("../assets/logo/logoZaim.png"),
+    logo: require("../app/assets/logo/logoZaim.png"),
   },
   staging: {
     apiUrl: "http://alzaimexpress.com/client/api",
-    logo: require("../assets/logo/logoZaim.png"),
+    logo: require("../app/assets/logo/logoZaim.png"),
   },
   prod: {
     apiUrl: "http://alzaimexpress.com/client/api",
-    logo: require("../assets/logo/logoZaim.png"),
+    logo: require("../app/assets/logo/logoZaim.png"),
   },
 };
 
