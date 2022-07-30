@@ -85,7 +85,7 @@ class OrderCard extends PureComponent {
                   {this.props.item?.date && (
                     <Text style={styles.subTitle} numberOfLines={1}>
                       <Moment
-                        style={{ color: "#999" }}
+                        style={{ color: "#aaa", fontSize: 10 }}
                         element={Text}
                         locale="ar"
                         interval={30000}
@@ -97,18 +97,28 @@ class OrderCard extends PureComponent {
                   )}
                 </View>
                 <View style={styles.detailsContainer}>
-                  <Text style={styles.title} numberOfLines={1}>
+                  <Text style={styles.subTitle} numberOfLines={1}>
                     {this.props.item?.store_name}
                   </Text>
-                  {this.props.item?.city && (
-                    <Text style={styles.subTitle} numberOfLines={1}>
-                      {this.props.item?.status_name}
-                      {this.props.item?.t_note ? this.props.item?.t_note : ""}
+                  {this.props.item?.store_name && (
+                    <Text
+                      style={styles.subTitle}
+                      numberOfLines={
+                        this.props.item.order_status_id === "9" ? 2 : 1
+                      }
+                    >
+                      {this.props.item?.status_name + " "}
+                      {this.props.item.order_status_id === "9" &&
+                        (this.props.item?.t_note
+                          ? `(${this.props.item?.t_note})`
+                          : "")}
                     </Text>
                   )}
-                  <Text style={styles.subTitle2} numberOfLines={1}>
-                    المبلغ ({numberWithCommas(this.props.item?.new_price)})
-                  </Text>
+                  {this.props.item.order_status_id !== "9" && (
+                    <Text style={styles.subTitle2} numberOfLines={1}>
+                      المبلغ: {numberWithCommas(this.props.item?.new_price)}
+                    </Text>
+                  )}
                 </View>
                 {false && (
                   <View style={styles.detailsContainer2}>
@@ -125,13 +135,14 @@ class OrderCard extends PureComponent {
               onPress={() =>
                 Linking.openURL(`tel:${this.props.item?.driver_phone}`)
               }
+              style={{ right: 10, borderRadius: 10 }}
+              underlayColor="#DDDDDD"
             >
               <Icon
-                backgroundColor={this.handelColor(
-                  this.props.item?.order_status_id
-                )}
-                name="phone"
-                size={60}
+                backgroundColor={"#00000000"}
+                iconColor={this.handelColor(this.props.item?.order_status_id)}
+                name="phone-message-outline"
+                size={55}
               />
             </TouchableHighlight>
           </View>
@@ -150,18 +161,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
     borderRadius: borderRadiuss.Radius_light,
-    borderTopLeftRadius: 35,
-    borderBottomLeftRadius: 35,
-    shadowColor: "#000",
+    shadowColor: "#333",
     shadowOffset: {
       width: 0,
       height: 1,
     },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-
     elevation: 2,
-    marginBottom: 10,
+    marginBottom: 5,
     width: "100%",
   },
   detailsContainer: {

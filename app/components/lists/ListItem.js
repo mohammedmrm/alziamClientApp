@@ -49,7 +49,7 @@ export default class ListItem extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    flexDirection: I18nManager.isRTL ? "row" : "row",
+    flexDirection: "row",
     borderRadius: borderRadiuss.Radius_larg,
     width: "90%",
     alignSelf: "center",

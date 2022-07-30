@@ -157,7 +157,7 @@ const OrderDetails = () => {
                 <Icon
                   name={"message-bulleted"}
                   size={70}
-                  iconColor={colors.medium}
+                  iconColor={"#de3456"}
                   backgroundColor={colors.white}
                 />
               </View>
@@ -234,11 +234,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 150,
     left: 30,
-    color: colors.primery,
+    color: colors.danger,
     borderRadius: borderRadiuss.Radius_larg,
     shadowColor: colors.black,
     shadowOffset: {
-      width: 0,
+      width: 1,
       height: 2,
     },
     shadowOpacity: 0.25,

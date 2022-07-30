@@ -301,14 +301,13 @@ function Dashboard() {
         iconColor={colors.secondery}
         onSubmitEditing={true}
         style={{
-          // backgroundColor: colors.light3,
           margin: 10,
           direction: "rtl",
         }}
       />
       <View
         style={{
-          flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+          flexDirection: "row-reverse",
           width: "100%",
           justifyContent: "space-around",
           paddingHorizontal: 2,
@@ -376,7 +375,7 @@ function Dashboard() {
         appearance="outline"
         size="small"
         status="primary"
-        style={{ width: "93%", alignSelf: "center", margin: 5 }}
+        style={{ width: "95%", alignSelf: "center", margin: 5 }}
         accessoryRight={isLoading ? LoadingIndicator : ""}
         color="black"
         onPress={() => {
