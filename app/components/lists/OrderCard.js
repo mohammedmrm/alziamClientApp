@@ -3,7 +3,8 @@ import { View, StyleSheet, Linking, TouchableHighlight } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import Moment from "react-moment";
+import "moment/locale/ar";
 import Icon from "./../Icon";
 import Text from "../AppText";
 import colors from "../../config/colors";
@@ -46,7 +47,7 @@ class OrderCard extends PureComponent {
           style={{
             alignSelf: "center",
             width: "90%",
-            height: 72,
+            height: 80,
           }}
         >
           <View
@@ -69,9 +70,7 @@ class OrderCard extends PureComponent {
                 style={{
                   width: "100%",
                   height: "100%",
-                  flexDirection: I18nManager.isRTL
-                    ? "row-reverse"
-                    : "row-reverse",
+                  flexDirection: "row-reverse",
                 }}
               >
                 <View style={styles.detailsContainer}>
@@ -83,9 +82,17 @@ class OrderCard extends PureComponent {
                       {this.props?.item?.city} - {this.props?.item?.town}
                     </Text>
                   )}
-                  {this.props.item?.days && (
+                  {this.props.item?.date && (
                     <Text style={styles.subTitle} numberOfLines={1}>
-                      {this.props.item?.days} منذ تسجيل الطلب
+                      <Moment
+                        style={{ color: "#999" }}
+                        element={Text}
+                        locale="ar"
+                        interval={30000}
+                        fromNow
+                      >
+                        {this.props?.item?.date}
+                      </Moment>
                     </Text>
                   )}
                 </View>
@@ -95,7 +102,7 @@ class OrderCard extends PureComponent {
                   </Text>
                   {this.props.item?.city && (
                     <Text style={styles.subTitle} numberOfLines={1}>
-                      {this.props.item?.status_name}{" "}
+                      {this.props.item?.status_name}
                       {this.props.item?.t_note ? this.props.item?.t_note : ""}
                     </Text>
                   )}

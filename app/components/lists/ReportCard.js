@@ -113,7 +113,7 @@ export default class ReportCard extends PureComponent {
                 backgroundColor={this.handelColor(
                   this.props.item.orders_status
                 )}
-                name="file-pdf"
+                name="file-chart"
                 size={60}
               />
             </TouchableWithoutFeedback>

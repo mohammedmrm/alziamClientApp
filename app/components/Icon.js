@@ -8,6 +8,7 @@ function Icon({
   size = 40,
   backgroundColor = "#000",
   iconColor = "#fff",
+  style,
 }) {
   return (
     <View
@@ -27,6 +28,7 @@ function Icon({
         shadowRadius: 1.41,
 
         elevation: 2,
+        ...style,
       }}
     >
       <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.5} />

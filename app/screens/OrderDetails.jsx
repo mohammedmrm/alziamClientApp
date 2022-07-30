@@ -17,6 +17,7 @@ import useAuth from "../auth/useAuth";
 import Routes from "../Routes";
 import borderRadiuss from "../config/borderRadiuss";
 import { I18nManager } from "react-native";
+import Icon from "../components/Icon";
 
 const OrderDetails = () => {
   const route = useRoute();
@@ -77,14 +78,19 @@ const OrderDetails = () => {
                     </Text>
                   </View>
                   <Text style={styles.titleOrderId}>{order?.order_no}</Text>
-                  <Text style={styles.titleStore}>{order?.store_name}</Text>
                 </View>
               </View>
               <View style={styles.textContainer}>
                 <ListItemOrderDetail
-                  caption="أسم الزبون"
-                  details={order?.customer_name}
+                  caption="أسم المحل"
+                  details={order?.store_name}
                 />
+                {order?.customer_name !== "NA" && (
+                  <ListItemOrderDetail
+                    caption="أسم الزبون"
+                    details={order?.customer_name}
+                  />
+                )}
                 <ListItemOrderDetail
                   onPress={true}
                   caption="هاتف الزبون"
@@ -93,7 +99,7 @@ const OrderDetails = () => {
                 {order?.address ? (
                   <ListItemOrderDetail
                     caption="عنوان الزبون"
-                    details={`${order?.city} - ${order?.town} - ${order?.address}`}
+                    details={`${order?.city} - ${order?.town}`}
                   />
                 ) : (
                   <ListItemOrderDetail
@@ -148,9 +154,11 @@ const OrderDetails = () => {
             </View>
             <TouchableWithoutFeedback onPress={() => startChating(order?.id)}>
               <View style={styles.chatShadow}>
-                <Image
-                  style={styles.chatIcon}
-                  source={require("./../assets/icons/chatIcon.png")}
+                <Icon
+                  name={"message-bulleted"}
+                  size={70}
+                  iconColor={colors.medium}
+                  backgroundColor={colors.white}
                 />
               </View>
             </TouchableWithoutFeedback>
@@ -196,13 +204,13 @@ const styles = StyleSheet.create({
   orderDetailsContainer: {
     backgroundColor: colors.white,
     width: "100%",
-    height: 300,
+    height: 310,
     marginBottom: 10,
     paddingBottom: 5,
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -211,15 +219,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    // marginBottom: 10
   },
   textContainer: {
     width: "100%",
-    height: "60%",
-    // backgroundColor: "gray",
-    marginRight: "10%",
+    height: "70%",
+    marginRight: "5%",
     marginBottom: "5%",
-    // marginTop: "2%",
     flexDirection: "column",
   },
 
@@ -229,6 +234,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 150,
     left: 30,
+    color: colors.primery,
     borderRadius: borderRadiuss.Radius_larg,
     shadowColor: colors.black,
     shadowOffset: {
@@ -237,18 +243,11 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-
-    elevation: 5,
     padding: 10,
     margin: 5,
   },
   chatIcon: {
-    width: "90%",
-    height: "90%",
-    padding: 5,
-    borderRadius: borderRadiuss.Radius_larg,
-    borderWidth: 1,
-    borderColor: colors.medium,
+    color: colors.danger,
   },
   titleStore: {
     fontSize: 20,
@@ -265,23 +264,15 @@ const styles = StyleSheet.create({
   },
   titleOrderStatusView: {
     backgroundColor: colors.primery,
-    padding: 15,
-    borderRadius: borderRadiuss.Radius_circl,
+    padding: 10,
+    borderRadius: 5,
     margin: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
     fontFamily: "Tjw_blod",
   },
   contanerBox: {
     height: "100%",
     width: "100%",
-    flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+    flexDirection: "row-reverse",
     justifyContent: "space-around",
     margin: 5,
   },
