@@ -6,7 +6,7 @@ import colors from "../config/colors";
 function Icon({
   name,
   size = 40,
-  backgroundColor = "#000",
+  backgroundColor = "#00000000",
   iconColor = "#fff",
   style,
 }) {

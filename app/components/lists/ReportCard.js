@@ -35,31 +35,11 @@ export default class ReportCard extends PureComponent {
         <View
           style={{
             alignSelf: "center",
-            width: "90%",
+            width: "95%",
             height: 80,
             paddingTop: 10,
           }}
         >
-          <View
-            style={{
-              backgroundColor:
-                this.props.item.orders_status === "4"
-                  ? colors.success
-                  : colors.danger,
-              width: "40%",
-              borderTopLeftRadius: 100,
-              borderRadius: borderRadiuss.Radius_extraLight,
-              marginLeft: 10,
-            }}
-          >
-            <Text
-              style={[styles.subTitle, { color: "white", paddingRight: 5 }]}
-            >
-              {this.props.item.orders_status === "4"
-                ? "كشف الواصل"
-                : "كشف الراجع"}
-            </Text>
-          </View>
           <View
             style={[
               styles.container,
@@ -72,7 +52,7 @@ export default class ReportCard extends PureComponent {
             ]}
           >
             <TouchableHighlight
-              style={{ width: "87%", height: "100%" }}
+              style={{ width: "100%", height: "100%" }}
               underlayColor={colors.light}
               onPress={this.props.onPress}
             >
@@ -80,12 +60,15 @@ export default class ReportCard extends PureComponent {
                 style={{
                   width: "100%",
                   height: "100%",
-                  flexDirection: I18nManager.isRTL
-                    ? "row-reverse"
-                    : "row-reverse",
+                  flexDirection: "row-reverse",
                 }}
               >
                 <View style={styles.detailsContainer}>
+                  <Text style={styles.subTitle}>
+                    {this.props.item.orders_status === "4"
+                      ? "كشف الواصل"
+                      : "كشف الراجع"}
+                  </Text>
                   <Text style={styles.title} numberOfLines={1}>
                     {this.props.item.in_date}
                   </Text>
@@ -94,6 +77,9 @@ export default class ReportCard extends PureComponent {
                   </Text>
                 </View>
                 <View style={styles.detailsContainer}>
+                  <Text style={styles.title} numberOfLines={1}>
+                    رقم الكشف {this.props.item.id}
+                  </Text>
                   <Text style={styles.title} numberOfLines={1}>
                     {this.props.item.orders} طلبية
                   </Text>
@@ -108,15 +94,16 @@ export default class ReportCard extends PureComponent {
               </View>
             </TouchableHighlight>
 
-            <TouchableWithoutFeedback onPress={this.props.onPress}>
+            <TouchableHighlight
+              onPress={this.props.onPress}
+              style={{ right: 60, borderRadius: 10 }}
+            >
               <Icon
-                backgroundColor={this.handelColor(
-                  this.props.item.orders_status
-                )}
+                iconColor={this.handelColor(this.props.item.orders_status)}
                 name="file-chart"
-                size={60}
+                size={70}
               />
-            </TouchableWithoutFeedback>
+            </TouchableHighlight>
           </View>
         </View>
       </Swipeable>
@@ -133,11 +120,9 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: "center",
-    flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+    flexDirection: "row-reverse",
     backgroundColor: colors.white,
-    borderRadius: borderRadiuss.light,
-    borderTopLeftRadius: 35,
-    borderBottomLeftRadius: 35,
+    borderRadius: 5,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -149,7 +134,7 @@ const styles = StyleSheet.create({
 
     marginBottom: 5,
     width: "100%",
-    height: 40,
+    height: 70,
   },
   detailsContainer: {
     flex: 1,

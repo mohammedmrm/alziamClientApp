@@ -255,7 +255,7 @@ function Dashboard() {
       />
       <View
         style={{
-          flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+          flexDirection: "row-reverse",
           width: "100%",
           justifyContent: "space-around",
           backgroundColor: colors.light,
