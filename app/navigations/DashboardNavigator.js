@@ -8,7 +8,7 @@ import OrderDetails from "../screens/OrderDetails";
 import Dashboard from "../screens/Dashboard";
 import Routes from "../Routes";
 import ChatModel from "../screens/ChatModel";
-import pdfViewerScreen from "../screens/pdfViewerScreen";
+import PdfViewerScreen from "../screens/pdfViewerScreen";
 import Statistics from "../screens/Statistics";
 import CallCenter from "../screens/CallCenter";
 
@@ -62,7 +62,7 @@ const DashboardNavigator = () => {
       />
       <Stack.Screen
         name={Routes.PDF_VIEW}
-        component={pdfViewerScreen}
+        component={PdfViewerScreen}
         options={{
           title: <Text style={{ fontFamily: "Tjw_reg" }}>كشف</Text>,
         }}

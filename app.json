@@ -15,7 +15,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./app/assets/logo/NL.png",
+          "icon": "./app/assets/logo/logoZaim.png",
           "color": "#ffffff",
           "sounds": [
             "./assets/n1.wav",
@@ -32,7 +32,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alnahr.alzaimClient",
+      "bundleIdentifier": "com.alzaim.Client",
       "buildNumber": "1.0.1"
     },
     "android": {
@@ -41,7 +41,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "useNextNotificationsApi": true,
-      "package": "com.alnahr.alzaimClient",
+      "package": "com.alzaim.Client",
       "versionCode": 2
     },
     "web": {
