@@ -14,9 +14,7 @@ const DashboardNavigator = () => {
         name={Routes.CHAT}
         component={Chat}
         options={{
-          headerShown: false,
-          title: () => null,
-          // title: <Text style={{ fontFamily: "Tjw_reg" }}>صفحة المحادثات</Text>,
+          title: <Text style={{ fontFamily: "Tjw_reg" }}>صفحة المحادثات</Text>,
         }}
       />
 

@@ -14,8 +14,6 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorLoading";
 import settings from "../config/settings";
-import borderRadiuss from "../config/borderRadiuss";
-import { I18nManager } from "react-native";
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string().required().min(11).max(11).label("رقم الهاتف"),
@@ -51,9 +49,9 @@ export default function LoginPage() {
       >
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={settings.logo} />
-          <Text style={styles.text}>تسجيل دخول </Text>
         </View>
         <View style={styles.formContainer}>
+          <Text style={styles.text}>تسجيل دخول </Text>
           <ErrorMessage
             error="رقم الهاتف او كلمة المرور خطاْ"
             visible={loginFailed}
@@ -66,7 +64,6 @@ export default function LoginPage() {
             keyboardType="phone-pad"
             autoCorrect={false}
           />
-
           <AppFormField
             rightIcon="lock"
             leftIcon="eye"
@@ -86,10 +83,10 @@ export default function LoginPage() {
 const styles = StyleSheet.create({
   logoContainer: {
     top: "5%",
+    padding: 5,
     alignItems: "center",
     alignSelf: "center",
     marginBottom: 5,
-    // backgroundColor: colors.black
   },
   text: {
     fontSize: 20,
@@ -104,25 +101,28 @@ const styles = StyleSheet.create({
 
   clinetDriverContaiar: {
     margin: 5,
-    flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+    flexDirection: "row-reverse",
     justifyContent: "center",
     alignItems: "center",
   },
 
   logo: {
+    padding: 10,
     width: 200,
     height: 200,
   },
 
   formContainer: {
     backgroundColor: colors.white,
+    alignItems: "center",
+    alignSelf: "center",
     width: "95%",
     height: 300,
     top: "5%",
     alignSelf: "center",
     borderWidth: 1,
     borderColor: colors.gray,
-    borderRadius: borderRadiuss.Radius_light,
+    borderRadius: 5,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,

@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Linking,
   Animated,
-  TouchableOpacity,
   Dimensions,
   Pressable,
   Modal,
@@ -36,9 +35,7 @@ import getCities from "../api/getCities";
 import getStores from "../api/getStores";
 import colors from "../config/colors";
 import { useRoute, useNavigation } from "@react-navigation/native";
-import BottomSheet from "reanimated-bottom-sheet";
 import Routes from "../Routes";
-import { I18nManager } from "react-native";
 //================================================
 
 function Dashboard() {
@@ -96,7 +93,7 @@ function Dashboard() {
         alignSelf: "center",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+        flexDirection: "row-reverse",
       }}
     >
       {/* <QuckViewDetails2 icon="information"
@@ -242,7 +239,6 @@ function Dashboard() {
       <Searchbar
         placeholder="بحث رقم الوصل او رقم الهاتف..."
         onChangeText={(x) => setSearch(x)}
-        onSubmitEditing={true}
         value={search}
         onChange={(x) => setSearch(x)}
         style={{

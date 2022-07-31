@@ -14,7 +14,9 @@ const DashboardNavigator = () => {
       <Stack.Screen
         name={Routes.SEARCH_RESULTS}
         component={SearchResults}
-        options={{ headerShown: false, title: () => null }}
+        options={{
+          title: <Text style={{ fontFamily: "Tjw_reg" }}>بحث</Text>,
+        }}
       />
 
       <Stack.Screen

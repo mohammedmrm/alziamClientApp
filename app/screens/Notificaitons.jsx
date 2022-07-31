@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import cache from "../utility/cache";
 
@@ -9,8 +9,6 @@ import getNotifications from "../api/getNofification";
 import useAuth from "../auth/useAuth";
 import Routes from "../Routes";
 import colors from "../config/colors";
-import AppText from "../components/AppText";
-// import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorSimpleLine";
 import ActivityIndecatorLoadingList from "./../components/ActivtyIndectors/ActivityIndecatorLoadingList";
 
 function NotificationScreen(props) {
@@ -50,7 +48,7 @@ function NotificationScreen(props) {
         "&limit=20"
     );
     setMessages([...messages, ...results.data]);
-    setTotalNotificaiton(results.data.count);
+    setTotalNotificaiton(results.data.unseen);
     setIsLoading(false);
     loadNotification("1");
   };
@@ -62,6 +60,13 @@ function NotificationScreen(props) {
   useEffect(() => {
     loadNotification_local("1");
     loadNotification(1);
+    navigator.setOptions({
+      title: (
+        <Text style={{ fontFamily: "Tjw_reg" }}>
+          الاشعارات ({totalNotificaiton})
+        </Text>
+      ),
+    });
   }, []);
   const refreshingMethod = () => {
     setRefreshing(true);
@@ -86,41 +91,40 @@ function NotificationScreen(props) {
   };
   return (
     <Screen>
-      <AppText style={styles.header}>
-        جميع الاشعارات:{totalNotificaiton}
-      </AppText>
-      <FlatList
-        data={messages}
-        keyExtractor={(item) =>
-          `${item.id}-${prefix}-${Date.now() + Math.random()}`.toString()
-        }
-        renderItem={({ item }) => (
-          <ListItem
-            title={`${item.title} - ${item.order_no}`}
-            subTitle={`${item.body} `}
-            date={item.date}
-            seen={item.client_seen === "1" ? colors.white : colors.unseen}
-            image={
-              item.client_seen === "1"
-                ? require("../assets/notifications/seen.png")
-                : require("../assets/notifications/unseen.png")
-            }
-            onPress={() =>
-              navigator.navigate(Routes.ORDER_DETAILS, {
-                id: item.order_id,
-                notify_id: item.id,
-              })
-            }
-          />
-        )}
-        ItemSeparatorComponent={ListItemSeparator}
-        refreshing={refreshing}
-        onRefresh={() => refreshingMethod()}
-        onEndReachedThreshold={0.5}
-        onEndReached={() => onEndReachedMohamed()}
-        ListFooterComponent={footer}
-      />
-      {footer()}
+      <View style={{ paddingTop: 5 }}>
+        <FlatList
+          data={messages}
+          keyExtractor={(item) =>
+            `${item.id}-${prefix}-${Date.now() + Math.random()}`.toString()
+          }
+          renderItem={({ item }) => (
+            <ListItem
+              title={`${item.title} - ${item.order_no}`}
+              subTitle={`${item.body} `}
+              date={item.date}
+              seen={item.client_seen === "1" ? colors.white : colors.unseen}
+              image={
+                item.client_seen === "1"
+                  ? require("../assets/notifications/seen.png")
+                  : require("../assets/notifications/unseen.png")
+              }
+              onPress={() => {
+                navigator.navigate(Routes.ORDER_DETAILS, {
+                  id: item.order_id,
+                  notify_id: item.id,
+                });
+              }}
+            />
+          )}
+          ItemSeparatorComponent={ListItemSeparator}
+          refreshing={refreshing}
+          onRefresh={() => refreshingMethod()}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => onEndReachedMohamed()}
+          ListFooterComponent={footer}
+        />
+        {footer()}
+      </View>
     </Screen>
   );
 }

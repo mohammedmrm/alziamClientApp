@@ -6,6 +6,8 @@ import colors from "../../config/colors";
 import Text from "../AppText";
 import borderRadiuss from "../../config/borderRadiuss";
 import { I18nManager } from "react-native";
+import Moment from "react-moment";
+import "moment/locale/ar";
 
 export default class ListItem extends PureComponent {
   render() {
@@ -32,7 +34,15 @@ export default class ListItem extends PureComponent {
               )}
               {this.props.date && (
                 <Text style={styles.subTitle} numberOfLines={1}>
-                  {this.props.date}
+                  <Moment
+                    style={{ color: "#aaa", fontSize: 11 }}
+                    element={Text}
+                    locale="ar"
+                    interval={30000}
+                    fromNow
+                  >
+                    {this.props?.date}
+                  </Moment>
                 </Text>
               )}
             </View>

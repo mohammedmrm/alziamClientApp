@@ -4,7 +4,7 @@ import { Feather } from "@expo/vector-icons";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
-import { Platform } from "react-native";
+import { Platform, Text } from "react-native";
 import { Vibration } from "react-native";
 
 import SearchResults from "./../navigations/SearchNavigator";
@@ -90,6 +90,7 @@ const AppNavigator = (ref) => {
   return (
     <Tab.Navigator
       activeColor={colors.vueColorButtom}
+      backBehaviour="initialRoute"
       style={{ backgroundColor: colors.vueColorButtom, fontFamily: "Tjw_blod" }}
       initialRouteName={Routes.DASHBOARD}
     >
@@ -151,9 +152,9 @@ const AppNavigator = (ref) => {
         name={Routes.PROFILE}
         component={Profile}
         options={{
-          headerShown: false,
+          // headerShown: false,
           tabBarLabel: () => null,
-          // tabBarLabel: "حسابي",
+          title: <Text style={{ fontFamily: "Tjw_reg" }}>الصفحة الشخصية</Text>,
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" color={color} size={size} />
           ),

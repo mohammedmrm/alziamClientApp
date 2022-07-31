@@ -14,7 +14,9 @@ const DashboardNavigator = () => {
       <Stack.Screen
         name={Routes.NOTIFICATION}
         component={Notificaitons}
-        options={{ headerShown: false, title: () => null }}
+        options={{
+          title: <Text style={{ fontFamily: "Tjw_reg" }}>الاشعارات</Text>,
+        }}
       />
 
       <Stack.Screen

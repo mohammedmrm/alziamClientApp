@@ -4,7 +4,6 @@ import { StyleSheet, View } from "react-native";
 import AppTaxt from "../components/AppText";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
-import borderRadiuss from "../config/borderRadiuss";
 import { I18nManager } from "react-native";
 const iconNames = [
   "",

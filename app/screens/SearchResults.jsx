@@ -40,7 +40,6 @@ import useAuth from "../auth/useAuth";
 import colors from "../config/colors";
 import Routes from "../Routes";
 import { I18nManager } from "react-native";
-import { date } from "yup/lib/locale";
 
 //-------------------------------------------------------------------------
 function Dashboard() {
@@ -133,7 +132,7 @@ function Dashboard() {
         alignSelf: "center",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: I18nManager.isRTL ? "row" : "row",
+        flexDirection: "row",
       }}
     >
       <QuckViewDetails2
@@ -299,7 +298,6 @@ function Dashboard() {
         value={search}
         onChange={(x) => setSearch(x)}
         iconColor={colors.secondery}
-        onSubmitEditing={true}
         style={{
           margin: 10,
           direction: "rtl",

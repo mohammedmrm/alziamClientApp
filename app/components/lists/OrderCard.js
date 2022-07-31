@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet, Linking, TouchableHighlight } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Moment from "react-moment";
 import "moment/locale/ar";
@@ -9,7 +8,6 @@ import Icon from "./../Icon";
 import Text from "../AppText";
 import colors from "../../config/colors";
 import borderRadiuss from "../../config/borderRadiuss";
-import { I18nManager } from "react-native";
 class OrderCard extends PureComponent {
   handelColor = (id) => {
     switch (id) {
@@ -159,7 +157,7 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: "center",
-    flexDirection: I18nManager.isRTL ? "row-reverse" : "row-reverse",
+    flexDirection: "row-reverse",
     borderRadius: borderRadiuss.Radius_light,
     shadowColor: "#333",
     shadowOffset: {
@@ -195,6 +193,5 @@ const styles = StyleSheet.create({
   },
 });
 export default function (props) {
-  const navigation = useNavigation();
-  return <OrderCard {...props} navigation={navigation} />;
+  return <OrderCard {...props} />;
 }
