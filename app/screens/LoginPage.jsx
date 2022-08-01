@@ -14,6 +14,7 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorLoading";
 import settings from "../config/settings";
+import Routes from "../Routes";
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string().required().min(11).max(11).label("رقم الهاتف"),
