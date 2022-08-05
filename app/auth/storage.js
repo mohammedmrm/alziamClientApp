@@ -6,7 +6,7 @@ const storeToken = async (authToken) => {
   try {
     await SecureStore.setItemAsync(key, JSON.stringify(authToken));
   } catch (error) {
-    console.log("Error storing the auth token", error);
+    console.log("Error storing the auth token");
   }
 };
 
@@ -15,7 +15,7 @@ const getToken = async () => {
     const user = JSON.parse(await SecureStore.getItemAsync(key));
     return user;
   } catch (error) {
-    console.log("Error getting the auth token", error);
+    console.log("Error getting the auth token");
   }
 };
 

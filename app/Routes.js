@@ -19,4 +19,5 @@ export default Object.freeze({
   DASHBOARD_LIST: "dashboardList",
   STATISTICS_PAGE2: "Statistics",
   CALLCENTER: "CallCenter",
+  Ads: "Ads",
 });

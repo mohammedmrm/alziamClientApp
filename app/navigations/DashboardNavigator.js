@@ -11,6 +11,7 @@ import ChatModel from "../screens/ChatModel";
 import PdfViewerScreen from "../screens/pdfViewerScreen";
 import Statistics from "../screens/Statistics";
 import CallCenter from "../screens/CallCenter";
+import Ads from "../screens/Ads";
 
 const Stack = createStackNavigator();
 const DashboardNavigator = () => {
@@ -45,7 +46,13 @@ const DashboardNavigator = () => {
           ),
         }}
       />
-
+      <Stack.Screen
+        name={Routes.Ads}
+        component={Ads}
+        options={{
+          title: <Text style={{ fontFamily: "Tjw_reg" }}>اعلان</Text>,
+        }}
+      />
       <Stack.Screen
         name={Routes.ORDER_DETAILS}
         component={OrderDetails}

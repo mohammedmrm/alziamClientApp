@@ -1,6 +1,6 @@
 import React from "react";
 import colors from "../config/colors";
-import { Button } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
 const AppButton = ({
   title,
@@ -13,17 +13,27 @@ const AppButton = ({
       mode="contained"
       onPress={onPress}
       loading={isLoading}
-      color={colors.primery}
+      color={colors.vueColorButtom}
       style={{
         margin: 5,
-        fontFamily: "Tjw_blod",
         height: 54,
-        width: 335,
+        width: "90%",
         alignSelf: "center",
         justifyContent: "center",
       }}
     >
-      {title}
+      <Text
+        style={{
+          margin: 5,
+          fontFamily: "Tjw_blod",
+          height: 54,
+          color: colors.white,
+          alignSelf: "center",
+          justifyContent: "center",
+        }}
+      >
+        {title}
+      </Text>
     </Button>
   );
 };

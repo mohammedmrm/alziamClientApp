@@ -11,14 +11,10 @@ import AuthNavigator from "./app/navigations/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import OfflineNotice from "./app/components/OfflineNotice";
-import { I18nManager } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
 import { navigationRef } from "./app/navigations/rootNavigation";
 
 export default function App() {
-  // Logger.start();
-  I18nManager.allowRTL(false);
-  I18nManager.forceRTL(false);
-
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
@@ -40,7 +36,10 @@ export default function App() {
     return (
       <AppLoading
         startAsync={restoreUser}
-        onFinish={() => setIsReady(true)}
+        onFinish={async () => {
+          setIsReady(true);
+          await SplashScreen.hideAsync();
+        }}
         onError={(e) => console.log(e)}
       />
     );

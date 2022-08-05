@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Switch } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  ScrollView,
+} from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -10,11 +17,10 @@ import {
 } from "../components/forms";
 import authApi from "../api/auth";
 import useAuth from "../auth/useAuth";
-import Screen from "../components/Screen";
+import { StatusBar } from "expo-status-bar";
 import colors from "../config/colors";
 import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorLoading";
 import settings from "../config/settings";
-import Routes from "../Routes";
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string().required().min(11).max(11).label("رقم الهاتف"),
@@ -40,44 +46,53 @@ export default function LoginPage() {
     auth.logIn(results.data);
   };
   return (
-    <Screen>
-      {isLoading && <ActivityIndecator visible={isLoading} />}
-
-      <AppForm
-        initialValues={{ phone: "", password: "" }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
+    <ImageBackground
+      blurRadius={6}
+      style={styles.background}
+      source={require("../assets/background/welcomePage.png")}
+    >
+      <StatusBar style="dark" />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
       >
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={settings.logo} />
-        </View>
-        <View style={styles.formContainer}>
-          <Text style={styles.text}>تسجيل دخول </Text>
-          <ErrorMessage
-            error="رقم الهاتف او كلمة المرور خطاْ"
-            visible={loginFailed}
-          />
-          <AppFormField
-            rightIcon="cellphone"
-            name="phone"
-            caption="رقم الموبايل"
-            autoCapitalize="none"
-            keyboardType="phone-pad"
-            autoCorrect={false}
-          />
-          <AppFormField
-            rightIcon="lock"
-            leftIcon="eye"
-            caption="كلمة المرور"
-            name="password"
-            autoCapitalize="none"
-            autoCorrect={false}
-            textContentType="password"
-          />
-          <SubmitButton title="تسجيل دخول" />
-        </View>
-      </AppForm>
-    </Screen>
+        {isLoading && <ActivityIndecator visible={isLoading} />}
+        <AppForm
+          initialValues={{ phone: "", password: "" }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <View style={styles.logoContainer}>
+            <Image style={styles.logo} source={settings.logo} />
+          </View>
+          <View style={styles.formContainer}>
+            <Text style={styles.text}>تسجيل دخول </Text>
+            <ErrorMessage
+              error="رقم الهاتف او كلمة المرور خطاْ"
+              visible={loginFailed}
+            />
+            <AppFormField
+              rightIcon="cellphone"
+              name="phone"
+              caption="رقم الموبايل"
+              autoCapitalize="none"
+              keyboardType="phone-pad"
+              autoCorrect={false}
+            />
+            <AppFormField
+              rightIcon="lock"
+              leftIcon="eye"
+              caption="كلمة المرور"
+              name="password"
+              autoCapitalize="none"
+              autoCorrect={false}
+              textContentType="password"
+            />
+            <SubmitButton title="تسجيل دخول" />
+          </View>
+        </AppForm>
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
@@ -88,6 +103,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     marginBottom: 5,
+  },
+  background: {
+    flex: 1,
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
   },
   text: {
     fontSize: 20,
@@ -111,6 +133,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 200,
     height: 200,
+    borderRadius: 10,
   },
 
   formContainer: {
@@ -118,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     width: "95%",
-    height: 300,
+    height: 350,
     top: "5%",
     alignSelf: "center",
     borderWidth: 1,

@@ -59,8 +59,10 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+*.cer
+eas.json
 !debug.keystore
-
+credentials.json
 # Bundle artifacts
 *.jsbundle
 

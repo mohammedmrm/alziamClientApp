@@ -19,5 +19,5 @@ export default {
   lightGreen: "#F3FBD0",
   unseen: "#f7fbfd",
   grayRandom: "#eceff1",
-  vueColorButtom: "#5ECE7B",
+  vueColorButtom: "#059c07",
 };

@@ -2,12 +2,12 @@
   "expo": {
     "name": "الزعيم - العميل",
     "slug": "alzaimClinet",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logoZaim.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -33,16 +33,17 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.alzaim.Client",
-      "buildNumber": "1.0.1"
+      "buildNumber": "2"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/logo/logoZaim.png",
         "backgroundColor": "#FFFFFF"
       },
       "useNextNotificationsApi": true,
       "package": "com.alzaim.Client",
-      "versionCode": 3
+      "versionCode": 6
     },
     "web": {
       "favicon": "./app/assets/logo/logoZaim.png"
