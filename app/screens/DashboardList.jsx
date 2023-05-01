@@ -163,6 +163,7 @@ function Dashboard() {
     }
     setOrders([...orders, ...results.data.data]);
     setIsLoading(false);
+    console.log(results);
   };
   const LoadingIndicator = (props) => (
     <View style={[props.style]}>
@@ -199,8 +200,6 @@ function Dashboard() {
     setIsLoading(true);
     loadOrders("1");
     loadOrders_local("1");
-  }, [city, store]);
-  useEffect(() => {
     setIsLoading(true);
     loadCities();
     loadStores();

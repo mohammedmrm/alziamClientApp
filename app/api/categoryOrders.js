@@ -8,6 +8,7 @@ const get = (token, status, city, store, search, page = 1, limit = 10) => {
   if (page) url += `&page=${page}`;
   if (store) url += `&store=${store}`;
   if (city) url += `&city=${city}`;
+  console.log("url: ", url);
   return client.get(url);
 };
 

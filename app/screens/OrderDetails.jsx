@@ -23,6 +23,7 @@ const OrderDetails = () => {
   const route = useRoute();
   let { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const [id, setDI] = useState(null);
   const [order, setOrder] = useState(null);
   const navigation = useNavigation();
   const prefix = "DelayedOrders";
@@ -35,6 +36,7 @@ const OrderDetails = () => {
   };
   useEffect(() => {
     loadDetails(user?.token, route?.params?.id, route?.params?.notify_id);
+    setDI(route?.params?.id);
   }, []);
   const handelColor = (id) => {
     switch (id) {
@@ -77,6 +79,18 @@ const OrderDetails = () => {
                       {order?.order_status}
                     </Text>
                   </View>
+                  <TouchableWithoutFeedback
+                    onPress={() => startChating(order?.id)}
+                  >
+                    <View style={styles.chatShadow}>
+                      <Icon
+                        name={"message-bulleted"}
+                        size={70}
+                        iconColor={"#de3456"}
+                        backgroundColor={colors.white}
+                      />
+                    </View>
+                  </TouchableWithoutFeedback>
                   <Text style={styles.titleOrderId}>{order?.order_no}</Text>
                 </View>
               </View>
@@ -152,16 +166,6 @@ const OrderDetails = () => {
                 )}
               </View>
             </View>
-            <TouchableWithoutFeedback onPress={() => startChating(order?.id)}>
-              <View style={styles.chatShadow}>
-                <Icon
-                  name={"message-bulleted"}
-                  size={70}
-                  iconColor={"#de3456"}
-                  backgroundColor={colors.white}
-                />
-              </View>
-            </TouchableWithoutFeedback>
             <ScrollView>
               {order?.tracking.map((item) => (
                 <TrackingBox
@@ -229,11 +233,6 @@ const styles = StyleSheet.create({
   },
 
   chatShadow: {
-    width: 70,
-    height: 70,
-    position: "absolute",
-    top: 150,
-    left: 30,
     color: colors.danger,
     borderRadius: borderRadiuss.Radius_larg,
     shadowColor: colors.black,
@@ -243,8 +242,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    padding: 10,
-    margin: 5,
+    padding: 2,
+    margin: 2,
   },
   chatIcon: {
     color: colors.danger,

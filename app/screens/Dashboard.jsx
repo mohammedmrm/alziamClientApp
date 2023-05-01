@@ -132,7 +132,7 @@ const Dashboard = () => {
             flexDirection: "row",
           }}
         >
-          <Pressable
+          {/*<Pressable
             onPress={() => navigator.navigate(Routes.STATISTICS_PAGE2)}
           >
             <Feather
@@ -144,7 +144,7 @@ const Dashboard = () => {
                 paddingHorizontal: 10,
               }}
             />
-          </Pressable>
+          </Pressable>*/}
           <Pressable
             style={{ marginLeft: 10 }}
             onPress={() =>
