@@ -1,12 +1,5 @@
 import React, { useRef, useCallback, useEffect, useState } from "react";
-import {
-  ScrollView,
-  RefreshControl,
-  Pressable,
-  View,
-  Animated,
-  Image,
-} from "react-native";
+import { ScrollView, RefreshControl, Pressable, View, Animated, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Headline, Title } from "react-native-paper";
 import { Feather } from "@expo/vector-icons";
@@ -17,6 +10,7 @@ import getAdsAPI from "../api/getAds";
 import useAuth from "../auth/useAuth";
 import getStatistic from "../api/getSummayBoxed";
 import colors from "../config/colors";
+import settings from "../config/settings";
 import Routes from "../Routes";
 import borderRadiuss from "../config/borderRadiuss";
 import cache from "../utility/cache";
@@ -123,7 +117,7 @@ const Dashboard = () => {
             color: colors.black,
           }}
         >
-          الزعيم
+          {settings.companyName}
         </Headline>
         <View
           style={{
@@ -132,24 +126,9 @@ const Dashboard = () => {
             flexDirection: "row",
           }}
         >
-          {/*<Pressable
-            onPress={() => navigator.navigate(Routes.STATISTICS_PAGE2)}
-          >
-            <Feather
-              name="pie-chart"
-              size={24}
-              color={colors.black}
-              style={{
-                paddingTop: 10,
-                paddingHorizontal: 10,
-              }}
-            />
-          </Pressable>*/}
           <Pressable
             style={{ marginLeft: 10 }}
-            onPress={() =>
-              navigator.navigate(Routes.Ads, { title: adsText.c_ad1 })
-            }
+            onPress={() => navigator.navigate(Routes.Ads, { title: adsText.c_ad1 })}
           >
             <Animated.View
               style={{
@@ -172,32 +151,29 @@ const Dashboard = () => {
           </Pressable>
         </View>
       </View>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        {<SummaryBoxes data={calcData} isLoading={isLoading} />}
+      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+        <SummaryBoxes data={calcData} isLoading={isLoading} />
         <Pressable onPress={() => navigator.navigate(Routes.CALLCENTER)}>
           <View
             style={{
               width: "90%",
               height: 45,
-              backgroundColor: "#c8e6c9",
+              backgroundColor: "#ffecb3",
               alignSelf: "center",
               margin: 10,
-              borderRadius: borderRadiuss.Radius_larg,
+              borderRadius: 5,
               alignItems: "center",
               justifyContent: "center",
-              flexDirection: "row-reverse",
+              flexDirection: "row",
+              elevation: 5,
             }}
           >
-            <Feather name="phone-call" size={20} color={"#388e3c"} />
+            <Feather name="phone-call" size={20} color={"#cc9900"} />
             <Title
               style={{
                 alignSelf: "center",
                 paddingHorizontal: 8,
-                color: "#388e3c",
+                color: "#cc9900",
                 fontFamily: "Tjw_xblod",
                 fontSize: 14,
               }}

@@ -28,7 +28,6 @@ export default function App() {
   });
   const restoreUser = async () => {
     const user = await authStorage.getUser();
-
     if (user.code != "300") setUser(user);
   };
 

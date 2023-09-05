@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Linking } from "react-native";
-
 import colors from "../config/colors";
-import Icon from "./Icon";
+
 const ListItemOrderDetail = ({ caption, details, onPress = false }) => {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
