@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "الزعيم - العميل",
-    "slug": "alzaimClinet",
+    "name": "The fast",
+    "slug": "alzaimClinetHelper",
     "version": "1.0.7",
     "orientation": "portrait",
-    "icon": "./app/assets/logo/logoZaim.png",
+    "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./app/assets/splash.png",
@@ -15,7 +15,7 @@
       [
         "expo-notifications",
         {
-          "icon": "./app/assets/logo/logoZaim.png",
+          "icon": "./app/assets/logo/logo.png",
           "color": "#ffffff",
           "sounds": [
             "./assets/n1.wav",
@@ -32,31 +32,30 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alzaim.Client",
-      "buildNumber": "1.0.7"
+      "bundleIdentifier": "com.alzaim.Client.helper",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/logo/logoZaim.png",
+        "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "useNextNotificationsApi": true,
-      "package": "com.alzaim.Client",
+      "package": "com.alzaim.Client.helper",
       "versionCode": 8
     },
     "web": {
-      "favicon": "./app/assets/logo/logoZaim.png"
+      "favicon": "./app/assets/logo/logo.png"
     },
     "notification": {
-      "icon": "./app/assets/logo/logoZaim.png",
+      "icon": "./app/assets/logo/logo.png",
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
     },
     "extra": {
       "eas": {
-        "projectId": "43b10a5d-133d-4cab-b16a-056fac800b9e"
+        "projectId": "50858777-a616-4673-87eb-ede4dd81bfaa"
       }
     }
   }

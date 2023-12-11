@@ -2,15 +2,18 @@ import Constants from "expo-constants";
 const settings = {
   dev: {
     apiUrl: "http://alzaimexpress.com/client/api",
-    logo: require("../assets/logo.jpg"),
+    logo: require("../assets/logo/logo.png"),
+    companyName: "السريع",
   },
   staging: {
     apiUrl: "http://alzaimexpress.com/client/api",
-    logo: require("../assets/logo.jpg"),
+    logo: require("../assets/logo/logo.png"),
+    companyName: "السريع",
   },
   prod: {
     apiUrl: "http://alzaimexpress.com/client/api",
-    logo: require("../assets/logo.jpg"),
+    logo: require("../assets/logo/logo.png"),
+    companyName: "السريع",
   },
 };
 
